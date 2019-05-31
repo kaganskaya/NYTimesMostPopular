@@ -1,0 +1,12 @@
+
+platform :ios, '9.0'
+use_frameworks!
+ 
+target 'NYTimesPopular' do
+    pod 'Alamofire'
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0' 
+    pod 'SwiftyJSON'
+
+ end
+ 
