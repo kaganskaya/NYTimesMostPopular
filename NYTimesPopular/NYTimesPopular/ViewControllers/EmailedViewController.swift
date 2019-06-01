@@ -61,7 +61,14 @@ extension EmailedViewController: MasterView, UITableViewDelegate,UITableViewData
         return cell!
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let article = articles[indexPath.row]
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
+        detailVC.emailed = article 
+        detailVC.type = "emailed"
+        self.showDetailViewController(detailVC, sender: self)
+    }
     
   
     

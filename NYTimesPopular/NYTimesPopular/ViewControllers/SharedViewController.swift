@@ -60,6 +60,14 @@ extension SharedViewController: MasterView, UITableViewDelegate,UITableViewDataS
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let article = articles[indexPath.row]
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
+        detailVC.shared = article
+        detailVC.type = "shared"
+        self.showDetailViewController(detailVC, sender: self)
+    }
     
     
     

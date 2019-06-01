@@ -23,10 +23,11 @@ class SharedTableViewCell: UITableViewCell {
         
         media.flatMap { a in
             a.mediaMetadata.map({ s in
-                url =  s.url
+               
+                url = s.url
+                
             })
         }
-        
         return url
     }
     

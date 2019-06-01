@@ -23,7 +23,9 @@ class EmailedTableViewCell: UITableViewCell {
         
             media.flatMap { a in
                 a.mediaMetadata.map({ s in
-                    url =  s.url
+                
+                    url = s.url
+                    
                 })
             }
         

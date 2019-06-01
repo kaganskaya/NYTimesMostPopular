@@ -61,7 +61,14 @@ extension MostViewedController: MasterView, UITableViewDelegate,UITableViewDataS
     }
     
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let article = articles[indexPath.row]
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
+        detailVC.viewed = article
+        detailVC.type = "viewed"
+        self.showDetailViewController(detailVC, sender: self)
+    }
     
     
     
