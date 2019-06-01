@@ -45,7 +45,10 @@ class GlobalProvider{
                         if let data = try? JSONSerialization.data(withJSONObject: listValues as! NSArray , options:[]){
                             do{
                                 
-                                let content:[Viewed] = try decoder.decode([Viewed].self, from: data)
+                                var content:[Viewed] = try decoder.decode([Viewed].self, from: data)
+                                
+                                content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                
                                 observer.onNext(content)
                                 observer.onCompleted()
                             }catch let er as NSError{
@@ -106,9 +109,12 @@ class GlobalProvider{
                         if let data = try? JSONSerialization.data(withJSONObject: listValues as! NSArray , options:[]){
                             do{
                                 
-                                let content:[Shared] = try decoder.decode([Shared].self, from: data)
-                                observer.onNext(content)
-                                observer.onCompleted()
+                                var content:[Shared] = try decoder.decode([Shared].self, from: data)
+                                
+                                    content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                    observer.onNext(content)
+                                    observer.onCompleted()
+                                
                             }catch let er as NSError{
                                 
                                 observer.onError(er)
@@ -167,9 +173,12 @@ class GlobalProvider{
                         if let data = try? JSONSerialization.data(withJSONObject: listValues as! NSArray , options:[]){
                             do{
                                 
-                                let content:[Emailed] = try decoder.decode([Emailed].self, from: data)
-                                observer.onNext(content)
-                                observer.onCompleted()
+                                var content:[Emailed] = try decoder.decode([Emailed].self, from: data)
+                                
+                                    content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                    observer.onNext(content)
+                                    observer.onCompleted()
+                                
                             }catch let er as NSError{
                                 
                                 observer.onError(er)

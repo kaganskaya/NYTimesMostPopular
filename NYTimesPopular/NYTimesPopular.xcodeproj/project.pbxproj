@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67141C1922A25CBC008017EC /* MasterPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1822A25CBC008017EC /* MasterPresenterImpl.swift */; };
+		67141C1C22A25CFA008017EC /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1B22A25CFA008017EC /* MasterView.swift */; };
+		67141C2022A26E0A008017EC /* EmailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1F22A26E0A008017EC /* EmailedTableViewCell.swift */; };
+		67141C2322A270A0008017EC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2222A270A0008017EC /* Extensions.swift */; };
+		67141C2522A27FDF008017EC /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2422A27FDF008017EC /* SharedViewController.swift */; };
+		67141C2722A27FFC008017EC /* SharedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2622A27FFC008017EC /* SharedTableViewCell.swift */; };
+		67141C2922A28954008017EC /* ViewedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2822A28954008017EC /* ViewedTableViewCell.swift */; };
+		67141C2B22A28971008017EC /* MostViewedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2A22A28971008017EC /* MostViewedController.swift */; };
+		67141C3022A28EE3008017EC /* Beckett-Kanzlei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67141C2F22A28E6D008017EC /* Beckett-Kanzlei.ttf */; };
 		6771898622A16E16000454A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771898522A16E16000454A7 /* AppDelegate.swift */; };
-		6771898822A16E16000454A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771898722A16E16000454A7 /* ViewController.swift */; };
+		6771898822A16E16000454A7 /* EmailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771898722A16E16000454A7 /* EmailedViewController.swift */; };
 		6771898B22A16E16000454A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6771898922A16E16000454A7 /* Main.storyboard */; };
 		6771898E22A16E16000454A7 /* NYTimesPopular.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6771898C22A16E16000454A7 /* NYTimesPopular.xcdatamodeld */; };
 		6771899022A16E16000454A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6771898F22A16E16000454A7 /* Assets.xcassets */; };
@@ -20,9 +29,18 @@
 
 /* Begin PBXFileReference section */
 		0889F318CEC2D3D08614F66C /* Pods-NYTimesPopular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesPopular.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYTimesPopular/Pods-NYTimesPopular.release.xcconfig"; sourceTree = "<group>"; };
+		67141C1822A25CBC008017EC /* MasterPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPresenterImpl.swift; sourceTree = "<group>"; };
+		67141C1B22A25CFA008017EC /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		67141C1F22A26E0A008017EC /* EmailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailedTableViewCell.swift; sourceTree = "<group>"; };
+		67141C2222A270A0008017EC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		67141C2422A27FDF008017EC /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
+		67141C2622A27FFC008017EC /* SharedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTableViewCell.swift; sourceTree = "<group>"; };
+		67141C2822A28954008017EC /* ViewedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedTableViewCell.swift; sourceTree = "<group>"; };
+		67141C2A22A28971008017EC /* MostViewedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedController.swift; sourceTree = "<group>"; };
+		67141C2F22A28E6D008017EC /* Beckett-Kanzlei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Beckett-Kanzlei.ttf"; sourceTree = "<group>"; };
 		6771898222A16E16000454A7 /* NYTimesPopular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesPopular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6771898522A16E16000454A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6771898722A16E16000454A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6771898722A16E16000454A7 /* EmailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailedViewController.swift; sourceTree = "<group>"; };
 		6771898A22A16E16000454A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6771898D22A16E16000454A7 /* NYTimesPopular.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NYTimesPopular.xcdatamodel; sourceTree = "<group>"; };
 		6771898F22A16E16000454A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +73,58 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		67141C1722A25125008017EC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				67141C1822A25CBC008017EC /* MasterPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		67141C1A22A25CE6008017EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				67141C1B22A25CFA008017EC /* MasterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		67141C1D22A25FD6008017EC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6771898722A16E16000454A7 /* EmailedViewController.swift */,
+				67141C2422A27FDF008017EC /* SharedViewController.swift */,
+				67141C2A22A28971008017EC /* MostViewedController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		67141C1E22A26DE8008017EC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				67141C1F22A26E0A008017EC /* EmailedTableViewCell.swift */,
+				67141C2622A27FFC008017EC /* SharedTableViewCell.swift */,
+				67141C2822A28954008017EC /* ViewedTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		67141C2122A27091008017EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				67141C2222A270A0008017EC /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		67141C2C22A28CFC008017EC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				67141C2F22A28E6D008017EC /* Beckett-Kanzlei.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		6771897922A16E16000454A7 = {
 			isa = PBXGroup;
 			children = (
@@ -76,10 +146,15 @@
 		6771898422A16E16000454A7 /* NYTimesPopular */ = {
 			isa = PBXGroup;
 			children = (
+				67141C2C22A28CFC008017EC /* Fonts */,
+				67141C2122A27091008017EC /* Extensions */,
+				67141C1E22A26DE8008017EC /* Cells */,
+				67141C1D22A25FD6008017EC /* ViewControllers */,
+				67141C1A22A25CE6008017EC /* View */,
+				67141C1722A25125008017EC /* Presenter */,
 				6771899B22A16E5D000454A7 /* Providers */,
 				6771899A22A16E56000454A7 /* Model */,
 				6771898522A16E16000454A7 /* AppDelegate.swift */,
-				6771898722A16E16000454A7 /* ViewController.swift */,
 				6771898922A16E16000454A7 /* Main.storyboard */,
 				6771898F22A16E16000454A7 /* Assets.xcassets */,
 				6771899122A16E16000454A7 /* LaunchScreen.storyboard */,
@@ -173,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67141C3022A28EE3008017EC /* Beckett-Kanzlei.ttf in Resources */,
 				6771899322A16E16000454A7 /* LaunchScreen.storyboard in Resources */,
 				6771899022A16E16000454A7 /* Assets.xcassets in Resources */,
 				6771898B22A16E16000454A7 /* Main.storyboard in Resources */,
@@ -241,11 +317,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67141C1922A25CBC008017EC /* MasterPresenterImpl.swift in Sources */,
+				67141C2522A27FDF008017EC /* SharedViewController.swift in Sources */,
+				67141C2322A270A0008017EC /* Extensions.swift in Sources */,
+				67141C2022A26E0A008017EC /* EmailedTableViewCell.swift in Sources */,
 				6771899D22A16E6C000454A7 /* Articles.swift in Sources */,
+				67141C1C22A25CFA008017EC /* MasterView.swift in Sources */,
 				6771899F22A16E8C000454A7 /* GlobalProvider.swift in Sources */,
+				67141C2922A28954008017EC /* ViewedTableViewCell.swift in Sources */,
 				6771898E22A16E16000454A7 /* NYTimesPopular.xcdatamodeld in Sources */,
-				6771898822A16E16000454A7 /* ViewController.swift in Sources */,
+				67141C2B22A28971008017EC /* MostViewedController.swift in Sources */,
+				6771898822A16E16000454A7 /* EmailedViewController.swift in Sources */,
 				6771898622A16E16000454A7 /* AppDelegate.swift in Sources */,
+				67141C2722A27FFC008017EC /* SharedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
