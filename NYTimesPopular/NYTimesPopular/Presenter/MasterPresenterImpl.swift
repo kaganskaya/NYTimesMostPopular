@@ -11,15 +11,26 @@ import RxSwift
 
 class MasterPresenter{
     
-    
+    var localProvider = LocalProvider()
     var globalProvider = GlobalProvider()
     
     weak var view:MasterView?
     
     private var disposeBag = DisposeBag()
     
-    
+    func deleteFromBd(title:String){
+        return localProvider.deleteData(title:title)
+    }
 
+    func saveEmailedToBd(article:Emailed,type:String) ->Observable<Bool>{
+        return localProvider.saveEmailed(article: article,type: type)
+    }
+    
+    func getFavorites()->[Favorites]{
+        
+        return localProvider.getFavorites()
+    }
+    
     func getEmailedArticles(){
         
         globalProvider.getEmailedArticles()

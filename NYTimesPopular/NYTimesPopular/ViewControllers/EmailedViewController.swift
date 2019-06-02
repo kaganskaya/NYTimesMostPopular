@@ -17,7 +17,6 @@ class EmailedViewController: UIViewController {
     
     var articles:[Emailed] = []
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,13 +55,16 @@ extension EmailedViewController: MasterView, UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "emailed",for: indexPath) as? EmailedTableViewCell
         
+        cell?.article = articles[indexPath.row]
+        
+        
         cell?.fillCell(article: articles[indexPath.row])
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    
         let article = articles[indexPath.row]
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
         detailVC.emailed = article 
