@@ -18,6 +18,7 @@ class ViewedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var star: UIButton!
     
+    var favorites:[Favorites] = []
     var isTapped:Bool = false
     var article:Viewed? = nil
     
@@ -32,7 +33,7 @@ class ViewedTableViewCell: UITableViewCell {
             sender.setBackgroundImage(stared, for: .normal)
             isTapped = true
             
-            presenter.saveEmailedToBd(article: self.article!,type:"viewed")
+            presenter.saveToBd(article: self.article!,type:"viewed")
             
         }else{
             
@@ -65,15 +66,14 @@ class ViewedTableViewCell: UITableViewCell {
         
         self.date.text = article.publishedDate.dateFormat()
         
-        var checkTitels:[String] = []
-        
-        presenter.getFavorites().flatMap { a in
-            checkTitels.append(a.title!)
+        if favorites.count == 0{
+            self.star.setBackgroundImage(empty, for: .normal)
         }
         
-        for i in checkTitels {
             
-            if i == self.title.text {
+        for i in favorites{
+            
+            if self.title.text == i.title {
                 
                 self.star.setBackgroundImage(stared, for: .normal)
                 self.isTapped = true
@@ -84,6 +84,8 @@ class ViewedTableViewCell: UITableViewCell {
                 self.isTapped = false
                 self.star.setBackgroundImage(empty, for: .normal)
             }
+        
+            
         }
         
         

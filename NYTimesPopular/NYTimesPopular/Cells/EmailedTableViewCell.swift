@@ -18,6 +18,7 @@ class EmailedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var star: UIButton!
     
+    var favorites:[Favorites] = []
     var isTapped:Bool = false
     var article:Emailed? = nil
     
@@ -33,7 +34,7 @@ class EmailedTableViewCell: UITableViewCell {
             sender.setBackgroundImage(stared, for: .normal)
             isTapped = true
        
-            presenter.saveEmailedToBd(article: self.article!,type:"emailed") 
+            presenter.saveToBd(article: self.article!,type:"emailed") 
 
         }else{
             
@@ -69,15 +70,13 @@ class EmailedTableViewCell: UITableViewCell {
         
         self.date.text = article.publishedDate.dateFormat()
         
-        var checkTitels:[String] = []
+        if favorites.count == 0{
+            self.star.setBackgroundImage(empty, for: .normal)}
         
-        presenter.getFavorites().flatMap { a in
-            checkTitels.append(a.title!)
-        }
-       
-        for i in checkTitels {
-            
-            if i == self.title.text {
+        
+        for i in favorites {
+
+            if self.title.text == i.title {
                 
                 self.star.setBackgroundImage(stared, for: .normal)
                 self.isTapped = true
@@ -89,7 +88,7 @@ class EmailedTableViewCell: UITableViewCell {
                 self.star.setBackgroundImage(empty, for: .normal)
             }
         }
-        
+    }
     }
     
-}
+

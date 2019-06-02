@@ -48,7 +48,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="37" id="y4t-x3-BhV"/>
                                                     </constraints>
-                                                    <state key="normal" image="star"/>
                                                     <connections>
                                                         <action selector="tapped:" destination="5fM-u7-xeg" eventType="touchUpInside" id="xv6-Vn-6Hg"/>
                                                     </connections>
@@ -205,7 +204,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="33.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrY-DC-G2Q">
-                                        <rect key="frame" x="8" y="3" width="28" height="25.5"/>
+                                        <rect key="frame" x="8" y="8" width="28" height="25.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="28" id="bye-ge-JAF"/>
                                         </constraints>
@@ -214,12 +213,24 @@
                                             <action selector="closeButton:" destination="Dvb-Hg-MYj" eventType="touchUpInside" id="RKq-dz-eKT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap3-CF-6hL">
+                                        <rect key="frame" x="316" y="3" width="39" height="35.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="39" id="NIm-4y-ajN"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="pressed:" destination="Dvb-Hg-MYj" eventType="touchUpInside" id="zRB-wB-KYZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="HrY-DC-G2Q" secondAttribute="bottom" constant="5" id="0mn-cI-k8o"/>
-                                    <constraint firstItem="HrY-DC-G2Q" firstAttribute="top" secondItem="4LE-5Y-wKk" secondAttribute="top" constant="3" id="6LG-VH-y3D"/>
+                                    <constraint firstAttribute="bottom" secondItem="HrY-DC-G2Q" secondAttribute="bottom" id="0mn-cI-k8o"/>
+                                    <constraint firstItem="HrY-DC-G2Q" firstAttribute="top" secondItem="4LE-5Y-wKk" secondAttribute="top" constant="8" id="6LG-VH-y3D"/>
                                     <constraint firstItem="HrY-DC-G2Q" firstAttribute="leading" secondItem="4LE-5Y-wKk" secondAttribute="leadingMargin" id="AOb-bz-9O2"/>
+                                    <constraint firstItem="ap3-CF-6hL" firstAttribute="top" secondItem="4LE-5Y-wKk" secondAttribute="top" constant="3" id="IOi-bf-bde"/>
+                                    <constraint firstItem="ap3-CF-6hL" firstAttribute="centerY" secondItem="HrY-DC-G2Q" secondAttribute="centerY" id="Z6M-Ks-UcY"/>
+                                    <constraint firstAttribute="trailing" secondItem="ap3-CF-6hL" secondAttribute="trailing" constant="20" id="mvg-KA-fZp"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QK1-43-Ir1" userLabel="Title">
@@ -330,6 +341,7 @@
                         <outlet property="articleTitle" destination="9mJ-cM-H9x" id="Fu0-xf-ynp"/>
                         <outlet property="date" destination="YpA-el-SdJ" id="ioF-R4-Lvv"/>
                         <outlet property="imageDescription" destination="x6f-Zi-dUi" id="8pK-94-FvC"/>
+                        <outlet property="star" destination="ap3-CF-6hL" id="0Fs-OD-Lwa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vp-8g-V3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -453,7 +465,7 @@
         <!--Stared-->
         <scene sceneID="TDK-YE-kzL">
             <objects>
-                <viewController id="Fai-tg-xn8" userLabel="Stared" sceneMemberID="viewController">
+                <viewController id="Fai-tg-xn8" userLabel="Stared" customClass="FavoritesViewController" customModule="NYTimesPopular" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eB1-iO-MUF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -462,7 +474,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailed" rowHeight="312" id="cOl-BR-GMd" customClass="EmailedTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favorite" rowHeight="312" id="cOl-BR-GMd" customClass="FavoritesTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cOl-BR-GMd" id="SHO-Wx-rui">
@@ -489,7 +501,7 @@
                                                         <constraint firstAttribute="width" constant="37" id="ASu-hU-VWy"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="press:" destination="cOl-BR-GMd" eventType="touchUpInside" id="OSf-0n-7YZ"/>
+                                                        <action selector="pressed:" destination="cOl-BR-GMd" eventType="touchUpInside" id="vyB-Ht-agv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -512,10 +524,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="articleImage" destination="WTN-2P-2ug" id="PMv-66-L7a"/>
-                                            <outlet property="date" destination="kID-B2-rfg" id="NjE-Ko-Vuv"/>
-                                            <outlet property="star" destination="sIz-fj-QXQ" id="Oae-im-h9v"/>
-                                            <outlet property="title" destination="Uxk-Ae-aba" id="om3-Vc-xxF"/>
+                                            <outlet property="articleImage" destination="WTN-2P-2ug" id="7om-Vx-MBX"/>
+                                            <outlet property="date" destination="kID-B2-rfg" id="YNy-tV-4hx"/>
+                                            <outlet property="star" destination="sIz-fj-QXQ" id="Hrp-P2-XUs"/>
+                                            <outlet property="title" destination="Uxk-Ae-aba" id="gKe-q2-5Dr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -531,6 +543,9 @@
                         <viewLayoutGuide key="safeArea" id="kgW-Ws-7cf"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="BId-F1-oC0"/>
+                    <connections>
+                        <outlet property="tableView" destination="4op-r0-rEu" id="dRL-3v-VyC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mai-OB-O47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -541,6 +556,5 @@
         <image name="close" width="43" height="43"/>
         <image name="emailed" width="33.75" height="33.75"/>
         <image name="shared" width="34" height="34"/>
-        <image name="star" width="57" height="57"/>
     </resources>
 </document>

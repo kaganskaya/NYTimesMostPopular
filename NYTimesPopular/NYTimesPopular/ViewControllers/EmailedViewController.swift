@@ -17,15 +17,21 @@ class EmailedViewController: UIViewController {
     
     var articles:[Emailed] = []
     
+    var favorites:[Favorites] = []
     
-    override func viewDidLoad() {
+    var stared:Bool!
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         
         self.tableView.setupHeader(view: self.view, name: "emailed")        
         
         presenter.view = self
-        presenter.getEmailedArticles()
+        presenter.viewF = self
 
+        presenter.getEmailedArticles()
+        presenter.getFavorites()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -34,9 +40,14 @@ class EmailedViewController: UIViewController {
 
 }
 
-extension EmailedViewController: MasterView, UITableViewDelegate,UITableViewDataSource {
+extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,UITableViewDataSource {
+   
     
-    
+    func showFavorites(articles: [Favorites]) {
+       self.favorites = articles
+        self.tableView.reloadData()
+
+    }
     
     
     func showArticles(articles: [Any]) {
@@ -55,10 +66,11 @@ extension EmailedViewController: MasterView, UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "emailed",for: indexPath) as? EmailedTableViewCell
         
-        cell?.article = articles[indexPath.row]
-        
+        cell?.favorites = self.favorites
         
         cell?.fillCell(article: articles[indexPath.row])
+        
+        cell?.article = articles[indexPath.row]       
         
         return cell!
     }
@@ -69,6 +81,18 @@ extension EmailedViewController: MasterView, UITableViewDelegate,UITableViewData
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
         detailVC.emailed = article 
         detailVC.type = "emailed"
+      
+        let cell = self.tableView.cellForRow(at: indexPath) as! EmailedTableViewCell
+        
+        if cell.star.currentBackgroundImage == UIImage(named: "star") {
+            self.stared = false
+        }
+        if cell.star.currentBackgroundImage == UIImage(named: "star1") {
+            self.stared = true
+        }
+        
+        detailVC.ifStared = self.stared
+        
         self.showDetailViewController(detailVC, sender: self)
     }
     

@@ -16,15 +16,20 @@ class SharedViewController: UIViewController {
     
     var articles:[Shared] = []
     
+    var favorites:[Favorites] = []
     
+    var stared:Bool!
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         
         self.tableView.setupHeader(view: self.view, name: "shared")
         
         presenter.view = self
+        presenter.viewF = self
+
         presenter.getShareddArticles()
+        presenter.getFavorites()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -34,9 +39,13 @@ class SharedViewController: UIViewController {
     
 }
 
-extension SharedViewController: MasterView, UITableViewDelegate,UITableViewDataSource {
+extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UITableViewDataSource {
     
-    
+    func showFavorites(articles: [Favorites]) {
+        self.favorites = articles
+        self.tableView.reloadData()
+
+    }
     
     
     func showArticles(articles: [Any]) {
@@ -55,6 +64,9 @@ extension SharedViewController: MasterView, UITableViewDelegate,UITableViewDataS
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "shared",for: indexPath) as? SharedTableViewCell
         
+        
+        cell?.favorites = self.favorites
+
         cell?.fillCell(article: articles[indexPath.row])
         
         cell?.article = articles[indexPath.row]
@@ -68,6 +80,19 @@ extension SharedViewController: MasterView, UITableViewDelegate,UITableViewDataS
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
         detailVC.shared = article
         detailVC.type = "shared"
+        
+        let cell = self.tableView.cellForRow(at: indexPath) as! SharedTableViewCell
+        
+        if cell.star.currentBackgroundImage == UIImage(named: "star") {
+            self.stared = false
+        }
+        if cell.star.currentBackgroundImage == UIImage(named: "star1") {
+            self.stared = true
+        }
+        
+        detailVC.ifStared = self.stared
+        
+        
         self.showDetailViewController(detailVC, sender: self)
     }
     

@@ -16,28 +16,10 @@ class LocalProvider{
     
     lazy var managedContext = appDelegate!.persistentContainer.viewContext
     
-    func getMediaData(media:[Media]) -> [String]{
-        
-        var data:[String] = []
-        media.flatMap { a in
-            data.append(a.copyright)
-
-        }
-        media.flatMap { a in
-            a.mediaMetadata.map({ s in
-                if s.height == 293 {
-                    data.append( s.url)
-                    
-                }
-                
-                
-            })
-        }
-        
-        return data
-    }
     
-    func saveEmailed(article: Any, type:String) -> Observable<Bool>{
+    
+    
+    func saveItem(article: Any, type:String) -> Observable<Bool>{
         
         do {
             
@@ -92,6 +74,15 @@ class LocalProvider{
                     print(er)
                 }
                 entityItem.copywrite = getMediaData(media: (article as! Viewed).media)[0]
+            case "stared":
+                
+                entityItem.title = (article as! Favorites).title
+                entityItem.abstract = (article as! Favorites).abstract
+                entityItem.date = (article as! Favorites).date
+                entityItem.link = (article as! Favorites).link
+                entityItem.star = true
+                entityItem.image = (article as! Favorites).image
+                entityItem.copywrite = (article as! Favorites).copywrite
             default:break
             }
             
@@ -143,28 +134,51 @@ class LocalProvider{
         
     }
     
-    func getFavorites()->[Favorites]{
+    func getFavorites()->Observable<[Favorites]>{
         
-        var res:[Favorites] = []
+       return Observable<[Favorites]>.create { observer -> Disposable in
         
         let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
                 
         do {
             
-             res  = try self.managedContext.fetch(fetchRequest) as! [Favorites]
+            let res  = try self.managedContext.fetch(fetchRequest) as! [Favorites]
             
-            do{
-                try managedContext.save()
-            } catch {}
+            observer.onNext(res)
+            observer.onCompleted()
             
             
         }catch let error as NSError {
             
             print("Detele all my data in error : \(error) \(error.userInfo)")
-            
+            observer.onError(error)
         }
-        return res
+        
+            return Disposables.create(with: {})
+        
+        }
     }
     
     
+    
+    func getMediaData(media:[Media]) -> [String]{
+        
+        var data:[String] = []
+        media.flatMap { a in
+            data.append(a.copyright)
+            
+        }
+        media.flatMap { a in
+            a.mediaMetadata.map({ s in
+                if s.height == 293 {
+                    data.append( s.url)
+                    
+                }
+                
+                
+            })
+        }
+        
+        return data
+    }
 }

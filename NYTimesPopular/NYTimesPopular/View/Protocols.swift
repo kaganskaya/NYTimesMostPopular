@@ -12,4 +12,10 @@ protocol MasterView: class {
     func showArticles(articles:[Any])
 }
 
+protocol FavoritesView:class {
+    func showFavorites(articles:[Favorites])
 
+}
+protocol CellUpdater: class {
+    func updateTableView()
+}

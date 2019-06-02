@@ -18,7 +18,7 @@ class SharedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var star: UIButton!
     
-    
+    var favorites:[Favorites] = []
     var isTapped:Bool = false
     var article:Shared? = nil
     
@@ -34,7 +34,7 @@ class SharedTableViewCell: UITableViewCell {
             sender.setBackgroundImage(stared, for: .normal)
             isTapped = true
             
-            presenter.saveEmailedToBd(article: self.article!,type:"shared")
+            presenter.saveToBd(article: self.article!,type:"shared")
             
         }else{
             
@@ -65,16 +65,15 @@ class SharedTableViewCell: UITableViewCell {
         self.title.text = article.title
         
         self.date.text = article.publishedDate.dateFormat()
-      
-        var checkTitels:[String] = []
-        
-        presenter.getFavorites().flatMap { a in
-            checkTitels.append(a.title!)
+       
+        if favorites.count == 0{
+            self.star.setBackgroundImage(empty, for: .normal)
         }
-        
-        for i in checkTitels {
             
-            if i == self.title.text {
+        
+        for i in favorites{
+            
+            if self.title.text == i.title {
                 
                 self.star.setBackgroundImage(stared, for: .normal)
                 self.isTapped = true

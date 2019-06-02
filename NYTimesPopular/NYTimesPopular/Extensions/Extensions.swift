@@ -71,11 +71,11 @@ extension String{
         
         let df = DateFormatter()
         
-        df.dateFormat = "yyyy-MM-dd"
+            df.dateFormat = "yyyy-MM-dd"
         
         let dt = df.date(from: self)
         
-        df.setLocalizedDateFormatFromTemplate("MMMM d")
+            df.setLocalizedDateFormatFromTemplate("MMMM d")
         
         return df.string(from: dt!)
     }

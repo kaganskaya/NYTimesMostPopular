@@ -15,38 +15,54 @@ class MasterPresenter{
     var globalProvider = GlobalProvider()
     
     weak var view:MasterView?
-    
+    weak var viewF:FavoritesView?
+
     private var disposeBag = DisposeBag()
+    
+    
     
     func deleteFromBd(title:String){
         return localProvider.deleteData(title:title)
     }
 
-    func saveEmailedToBd(article:Any,type:String) ->Observable<Bool>{
-        return localProvider.saveEmailed(article: article,type: type)
+    func saveToBd(article:Any,type:String) ->Observable<Bool>{
+        return localProvider.saveItem(article: article,type: type)
     }
     
-    func getFavorites()->[Favorites]{
+    func getFavorites(){
         
-        return localProvider.getFavorites()
+        localProvider.getFavorites()
+            .subscribe(
+                onNext: { n in
+                self.viewF?.showFavorites(articles: n)
+
+            }, onError: { err in
+                print(err.localizedDescription)
+                
+            }, onCompleted: {
+                //print(" onCompleted")
+            }, onDisposed: {
+                //print("onDisposed")
+            }).disposed(by: disposeBag)
     }
+    
     
     func getEmailedArticles(){
         
         globalProvider.getEmailedArticles()
-                    .subscribe(
-                        onNext: { n  in
+                .subscribe(
+                    onNext: { n  in
                            
-                            self.view?.showArticles(articles: n)
-        
-                    }, onError: { err in
+                        self.view?.showArticles(articles: n)
+    
+                }, onError: { err in
                        print(err.localizedDescription)
                        
-                    }, onCompleted: {
-                        //print(" onCompleted")
-                    }, onDisposed: {
-                        //print("onDisposed")
-                    }).disposed(by: disposeBag)
+                }, onCompleted: {
+                    //print(" onCompleted")
+                }, onDisposed: {
+                    //print("onDisposed")
+                }).disposed(by: disposeBag)
     }
     
     func getShareddArticles(){
