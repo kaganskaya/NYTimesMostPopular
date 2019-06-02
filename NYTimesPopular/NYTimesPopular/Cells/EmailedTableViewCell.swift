@@ -74,7 +74,7 @@ class EmailedTableViewCell: UITableViewCell {
         presenter.getFavorites().flatMap { a in
             checkTitels.append(a.title!)
         }
-        
+       
         for i in checkTitels {
             
             if i == self.title.text {

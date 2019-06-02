@@ -5,7 +5,6 @@
 //  Created by liza_kaganskaya on 6/1/19.
 //  Copyright © 2019 liza_kaganskaya. All rights reserved.
 //
-
 import Foundation
 import RxSwift
 import Alamofire
@@ -26,8 +25,11 @@ class LocalProvider{
         }
         media.flatMap { a in
             a.mediaMetadata.map({ s in
+                if s.height == 293 {
+                    data.append( s.url)
+                    
+                }
                 
-                data.append(s.url)
                 
             })
         }
@@ -51,11 +53,14 @@ class LocalProvider{
                 entityItem.date = (article as! Emailed).publishedDate.dateFormat()
                 entityItem.link = (article as! Emailed).url
                 entityItem.star = true
-                //            let image = NSURL(fileURLWithPath: getMediaData(media: article.media)[1])
-                //            let resIm = NSData(contentsOf: image as URL)
-                //            print(image)
-                //
-                //            entityItem.image = resIm! as Data
+                
+                do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Emailed).media)[1])!)
+                    entityItem.image = imageData
+
+                }catch let er as NSError{
+                    print(er)
+                }
+             
                 entityItem.copywrite = getMediaData(media: (article as! Emailed).media)[0]
                 
             case "shared":
@@ -65,11 +70,12 @@ class LocalProvider{
                 entityItem.date = (article as! Shared).publishedDate.dateFormat()
                 entityItem.link = (article as! Shared).url
                 entityItem.star = true
-                //            let image = NSURL(fileURLWithPath: getMediaData(media: article.media)[1])
-                //            let resIm = NSData(contentsOf: image as URL)
-                //            print(image)
-                //
-                //            entityItem.image = resIm! as Data
+                do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Shared).media)[1])!)
+                    entityItem.image = imageData
+                    
+                }catch let er as NSError{
+                    print(er)
+                }
                 entityItem.copywrite = getMediaData(media: (article as! Shared).media)[0]
                 
             case "viewed":
@@ -79,11 +85,12 @@ class LocalProvider{
                 entityItem.date = (article as! Viewed).publishedDate.dateFormat()
                 entityItem.link = (article as! Viewed).url
                 entityItem.star = true
-                //            let image = NSURL(fileURLWithPath: getMediaData(media: article.media)[1])
-                //            let resIm = NSData(contentsOf: image as URL)
-                //            print(image)
-                //
-                //            entityItem.image = resIm! as Data
+                do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Viewed).media)[1])!)
+                    entityItem.image = imageData
+                    
+                }catch let er as NSError{
+                    print(er)
+                }
                 entityItem.copywrite = getMediaData(media: (article as! Viewed).media)[0]
             default:break
             }
