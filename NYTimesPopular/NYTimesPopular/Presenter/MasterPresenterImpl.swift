@@ -22,7 +22,7 @@ class MasterPresenter{
         return localProvider.deleteData(title:title)
     }
 
-    func saveEmailedToBd(article:Emailed,type:String) ->Observable<Bool>{
+    func saveEmailedToBd(article:Any,type:String) ->Observable<Bool>{
         return localProvider.saveEmailed(article: article,type: type)
     }
     

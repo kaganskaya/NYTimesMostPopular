@@ -16,6 +16,33 @@ class ViewedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var date: UILabel!
     
+    @IBOutlet weak var star: UIButton!
+    
+    var isTapped:Bool = false
+    var article:Viewed? = nil
+    
+    let presenter = MasterPresenter()
+    let stared:UIImage = UIImage(named: "star1")!
+    let empty:UIImage = UIImage(named: "star")!
+    
+    @IBAction func tapped(_ sender: UIButton) {
+        
+        if !isTapped{
+            
+            sender.setBackgroundImage(stared, for: .normal)
+            isTapped = true
+            
+            presenter.saveEmailedToBd(article: self.article!,type:"viewed")
+            
+        }else{
+            
+            sender.setBackgroundImage(empty, for: .normal)
+            isTapped = false
+            
+            presenter.deleteFromBd(title: (self.article?.title)!)
+        }
+        
+    }
     func getImgUrl(media:[Media]) -> String{
         
         var url:String = " "
@@ -37,6 +64,27 @@ class ViewedTableViewCell: UITableViewCell {
         self.title.text = article.title
         
         self.date.text = article.publishedDate.dateFormat()
+        
+        var checkTitels:[String] = []
+        
+        presenter.getFavorites().flatMap { a in
+            checkTitels.append(a.title!)
+        }
+        
+        for i in checkTitels {
+            
+            if i == self.title.text {
+                
+                self.star.setBackgroundImage(stared, for: .normal)
+                self.isTapped = true
+                break
+                
+            } else{
+                
+                self.isTapped = false
+                self.star.setBackgroundImage(empty, for: .normal)
+            }
+        }
         
         
     }

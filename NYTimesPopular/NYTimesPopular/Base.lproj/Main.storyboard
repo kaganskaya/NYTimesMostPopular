@@ -48,7 +48,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="37" id="y4t-x3-BhV"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="star"/>
+                                                    <state key="normal" image="star"/>
+                                                    <connections>
+                                                        <action selector="tapped:" destination="5fM-u7-xeg" eventType="touchUpInside" id="xv6-Vn-6Hg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -72,6 +75,7 @@
                                         <connections>
                                             <outlet property="articleImage" destination="k5p-2r-0HO" id="vzZ-cJ-BIM"/>
                                             <outlet property="date" destination="ufB-oj-Fxg" id="xWu-yS-NeQ"/>
+                                            <outlet property="star" destination="ePe-7e-LHN" id="cWo-Uf-sX2"/>
                                             <outlet property="title" destination="mVs-nX-RLy" id="ie7-ZX-TBz"/>
                                         </connections>
                                     </tableViewCell>
@@ -370,7 +374,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="37" id="bHO-FW-xdT"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="star"/>
+                                                    <connections>
+                                                        <action selector="tapped:" destination="CVo-zI-Ozp" eventType="touchUpInside" id="pQj-3c-w86"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -394,6 +400,7 @@
                                         <connections>
                                             <outlet property="articleImage" destination="Rv2-0o-OAc" id="k05-VS-WAg"/>
                                             <outlet property="date" destination="tuC-o1-gZ6" id="BEL-bY-Mhy"/>
+                                            <outlet property="star" destination="yDh-6k-AOM" id="naj-rb-8E9"/>
                                             <outlet property="title" destination="inH-Ni-VX9" id="u9H-uJ-mjA"/>
                                         </connections>
                                     </tableViewCell>
@@ -418,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ye9-Wa-bbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2293.5999999999999" y="-1160.8695652173915"/>
+            <point key="canvasLocation" x="-2476" y="-1217"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="P1F-sK-Hng">
@@ -441,7 +448,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4i-Pn-ugu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3215" y="-884"/>
+            <point key="canvasLocation" x="-3513" y="-1000"/>
         </scene>
         <!--Stared-->
         <scene sceneID="TDK-YE-kzL">

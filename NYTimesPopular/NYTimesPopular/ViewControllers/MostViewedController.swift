@@ -57,6 +57,8 @@ extension MostViewedController: MasterView, UITableViewDelegate,UITableViewDataS
         
         cell?.fillCell(article: articles[indexPath.row])
         
+        cell?.article = articles[indexPath.row]
+        
         return cell!
     }
     
