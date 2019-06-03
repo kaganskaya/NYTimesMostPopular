@@ -9,7 +9,7 @@
 import UIKit
 
 class SharedViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     let presenter = MasterPresenter()
@@ -26,8 +26,8 @@ class SharedViewController: UIViewController {
         self.tableView.setupHeader(view: self.view, name: "shared")
         
         presenter.view = self
-        presenter.viewF = self
-
+        presenter.favoritesView = self
+        
         presenter.getShareddArticles()
         presenter.getFavorites()
         
@@ -44,7 +44,7 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
     func showFavorites(articles: [Favorites]) {
         self.favorites = articles
         self.tableView.reloadData()
-
+        
     }
     
     
@@ -62,26 +62,28 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shared",for: indexPath) as? SharedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shared",for: indexPath) as? ArticleTableViewCell
         
+        cell?.type = "shared"
         
         cell?.favorites = self.favorites
-
-        cell?.fillCell(article: articles[indexPath.row])
         
-        cell?.article = articles[indexPath.row]
-
+        cell?.article = self.articles[indexPath.row]
+        
+        cell?.fillCell()
+        
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let article = articles[indexPath.row]
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
-        detailVC.shared = article
+        
+        detailVC.article = articles[indexPath.row]
+        
         detailVC.type = "shared"
         
-        let cell = self.tableView.cellForRow(at: indexPath) as! SharedTableViewCell
+        let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
         if cell.star.currentBackgroundImage == UIImage(named: "star") {
             self.stared = false
@@ -92,8 +94,8 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
         
         detailVC.ifStared = self.stared
         
-        
         self.showDetailViewController(detailVC, sender: self)
+        
     }
     
     
@@ -102,4 +104,5 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
     
     
 }
+
 

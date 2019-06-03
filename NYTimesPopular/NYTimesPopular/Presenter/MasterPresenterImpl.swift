@@ -15,8 +15,8 @@ class MasterPresenter{
     var globalProvider = GlobalProvider()
     
     weak var view:MasterView?
-    weak var viewF:FavoritesView?
-
+    weak var favoritesView:FavoritesView?
+    
     private var disposeBag = DisposeBag()
     
     
@@ -24,7 +24,7 @@ class MasterPresenter{
     func deleteFromBd(title:String){
         return localProvider.deleteData(title:title)
     }
-
+    
     func saveToBd(article:Any,type:String) ->Observable<Bool>{
         return localProvider.saveItem(article: article,type: type)
     }
@@ -34,8 +34,8 @@ class MasterPresenter{
         localProvider.getFavorites()
             .subscribe(
                 onNext: { n in
-                self.viewF?.showFavorites(articles: n)
-
+                    self.favoritesView?.showFavorites(articles: n)
+                    
             }, onError: { err in
                 print(err.localizedDescription)
                 
@@ -50,19 +50,19 @@ class MasterPresenter{
     func getEmailedArticles(){
         
         globalProvider.getEmailedArticles()
-                .subscribe(
-                    onNext: { n  in
-                           
-                        self.view?.showArticles(articles: n)
-    
-                }, onError: { err in
-                       print(err.localizedDescription)
-                       
-                }, onCompleted: {
-                    //print(" onCompleted")
-                }, onDisposed: {
-                    //print("onDisposed")
-                }).disposed(by: disposeBag)
+            .subscribe(
+                onNext: { n  in
+                    
+                    self.view?.showArticles(articles: n)
+                    
+            }, onError: { err in
+                print(err.localizedDescription)
+                
+            }, onCompleted: {
+                //print(" onCompleted")
+            }, onDisposed: {
+                //print("onDisposed")
+            }).disposed(by: disposeBag)
     }
     
     func getShareddArticles(){
@@ -98,6 +98,6 @@ class MasterPresenter{
                 //print("onDisposed")
             }).disposed(by: disposeBag)
     }
- 
-
+    
+    
 }

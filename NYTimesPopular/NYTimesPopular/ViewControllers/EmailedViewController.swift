@@ -24,11 +24,11 @@ class EmailedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         
-        self.tableView.setupHeader(view: self.view, name: "emailed")        
+        self.tableView.setupHeader(view: self.view, name: "emailed")
         
         presenter.view = self
-        presenter.viewF = self
-
+        presenter.favoritesView = self
+        
         presenter.getEmailedArticles()
         presenter.getFavorites()
         
@@ -36,23 +36,23 @@ class EmailedViewController: UIViewController {
         tableView.dataSource = self
         
     }
-   
-
+    
+    
 }
 
 extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,UITableViewDataSource {
-   
+    
     
     func showFavorites(articles: [Favorites]) {
-       self.favorites = articles
+        self.favorites = articles
         self.tableView.reloadData()
-
+        
     }
     
     
     func showArticles(articles: [Any]) {
         
-        self.articles = articles as! [Emailed] 
+        self.articles = articles as! [Emailed]
         self.tableView.reloadData()
     }
     
@@ -64,25 +64,28 @@ extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "emailed",for: indexPath) as? EmailedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "emailed",for: indexPath) as? ArticleTableViewCell
+        
+        cell?.type = "emailed"
         
         cell?.favorites = self.favorites
         
-        cell?.fillCell(article: articles[indexPath.row])
+        cell?.article = articles[indexPath.row]
         
-        cell?.article = articles[indexPath.row]       
+        cell?.fillCell()
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-        let article = articles[indexPath.row]
+        
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
-        detailVC.emailed = article 
+        
+        detailVC.article = articles[indexPath.row]
+        
         detailVC.type = "emailed"
-      
-        let cell = self.tableView.cellForRow(at: indexPath) as! EmailedTableViewCell
+        
+        let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
         if cell.star.currentBackgroundImage == UIImage(named: "star") {
             self.stared = false
@@ -96,9 +99,10 @@ extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,
         self.showDetailViewController(detailVC, sender: self)
     }
     
-  
     
-   
+    
+    
     
 }
+
 

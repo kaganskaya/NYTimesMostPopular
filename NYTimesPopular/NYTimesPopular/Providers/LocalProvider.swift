@@ -17,8 +17,6 @@ class LocalProvider{
     lazy var managedContext = appDelegate!.persistentContainer.viewContext
     
     
-    
-    
     func saveItem(article: Any, type:String) -> Observable<Bool>{
         
         do {
@@ -38,11 +36,11 @@ class LocalProvider{
                 
                 do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Emailed).media)[1])!)
                     entityItem.image = imageData
-
+                    
                 }catch let er as NSError{
                     print(er)
                 }
-             
+                
                 entityItem.copywrite = getMediaData(media: (article as! Emailed).media)[0]
                 
             case "shared":
@@ -86,8 +84,6 @@ class LocalProvider{
             default:break
             }
             
-            
-            
             do{
                 try managedContext.save()
                 
@@ -98,23 +94,20 @@ class LocalProvider{
             }
             
             
-            
-            return Observable.just(false)
-            
         }}
+    
     
     func deleteData(title:String){
         
-
-       
+        
         let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
         
-            fetchRequest.predicate = NSPredicate(format: "title == %@", "\(title)")
+        fetchRequest.predicate = NSPredicate(format: "title == %@", "\(title)")
         
         do {
             
-            var fetchedResults =  try managedContext.fetch(fetchRequest)
-
+            let fetchedResults =  try managedContext.fetch(fetchRequest)
+            
             for entity in fetchedResults {
                 
                 managedContext.delete(entity as! NSManagedObject)
@@ -123,7 +116,9 @@ class LocalProvider{
             
             do{
                 try managedContext.save()
-            } catch {}
+            } catch let error as NSError {
+                print(error)
+            }
             
             
         }catch let error as NSError {
@@ -136,26 +131,27 @@ class LocalProvider{
     
     func getFavorites()->Observable<[Favorites]>{
         
-       return Observable<[Favorites]>.create { observer -> Disposable in
         
-        let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+        return Observable<[Favorites]>.create { observer -> Disposable in
+            
+            let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+            
+            do {
                 
-        do {
+                let res  = try self.managedContext.fetch(fetchRequest) as! [Favorites]
+                
+                observer.onNext(res)
+                observer.onCompleted()
+                
+                
+            }catch let error as NSError {
+                
+                print("Detele all my data in error : \(error) \(error.userInfo)")
+                observer.onError(error)
+            }
             
-            let res  = try self.managedContext.fetch(fetchRequest) as! [Favorites]
-            
-            observer.onNext(res)
-            observer.onCompleted()
-            
-            
-        }catch let error as NSError {
-            
-            print("Detele all my data in error : \(error) \(error.userInfo)")
-            observer.onError(error)
-        }
-        
             return Disposables.create(with: {})
-        
+            
         }
     }
     
@@ -163,19 +159,19 @@ class LocalProvider{
     
     func getMediaData(media:[Media]) -> [String]{
         
+        
         var data:[String] = []
-        media.flatMap { a in
+        
+        _ = media.compactMap { a in
             data.append(a.copyright)
             
         }
-        media.flatMap { a in
+        
+        _ = media.flatMap { a in
             a.mediaMetadata.map({ s in
                 if s.height == 293 {
                     data.append( s.url)
-                    
                 }
-                
-                
             })
         }
         

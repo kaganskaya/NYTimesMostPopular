@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		67141C1922A25CBC008017EC /* MasterPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1822A25CBC008017EC /* MasterPresenterImpl.swift */; };
 		67141C1C22A25CFA008017EC /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1B22A25CFA008017EC /* Protocols.swift */; };
-		67141C2022A26E0A008017EC /* EmailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1F22A26E0A008017EC /* EmailedTableViewCell.swift */; };
+		67141C2022A26E0A008017EC /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C1F22A26E0A008017EC /* ArticleTableViewCell.swift */; };
 		67141C2322A270A0008017EC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2222A270A0008017EC /* Extensions.swift */; };
 		67141C2522A27FDF008017EC /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2422A27FDF008017EC /* SharedViewController.swift */; };
-		67141C2722A27FFC008017EC /* SharedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2622A27FFC008017EC /* SharedTableViewCell.swift */; };
-		67141C2922A28954008017EC /* ViewedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2822A28954008017EC /* ViewedTableViewCell.swift */; };
 		67141C2B22A28971008017EC /* MostViewedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67141C2A22A28971008017EC /* MostViewedController.swift */; };
 		67141C3022A28EE3008017EC /* Beckett-Kanzlei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67141C2F22A28E6D008017EC /* Beckett-Kanzlei.ttf */; };
 		6771898622A16E16000454A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6771898522A16E16000454A7 /* AppDelegate.swift */; };
@@ -27,7 +25,6 @@
 		67BC137622A2B9ED009C76D1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC137522A2B9ED009C76D1 /* DetailsViewController.swift */; };
 		67BC137822A30DFB009C76D1 /* LocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC137722A30DFB009C76D1 /* LocalProvider.swift */; };
 		67FCCA3722A3C4B600E524A9 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FCCA3622A3C4B600E524A9 /* FavoritesViewController.swift */; };
-		67FCCA3922A3C4CE00E524A9 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FCCA3822A3C4CE00E524A9 /* FavoritesTableViewCell.swift */; };
 		948FF6E09A7189F2B81AF87A /* Pods_NYTimesPopular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CE62E662E5E193E95510DD /* Pods_NYTimesPopular.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,11 +32,9 @@
 		0889F318CEC2D3D08614F66C /* Pods-NYTimesPopular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesPopular.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYTimesPopular/Pods-NYTimesPopular.release.xcconfig"; sourceTree = "<group>"; };
 		67141C1822A25CBC008017EC /* MasterPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterPresenterImpl.swift; sourceTree = "<group>"; };
 		67141C1B22A25CFA008017EC /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		67141C1F22A26E0A008017EC /* EmailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailedTableViewCell.swift; sourceTree = "<group>"; };
+		67141C1F22A26E0A008017EC /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		67141C2222A270A0008017EC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		67141C2422A27FDF008017EC /* SharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
-		67141C2622A27FFC008017EC /* SharedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTableViewCell.swift; sourceTree = "<group>"; };
-		67141C2822A28954008017EC /* ViewedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedTableViewCell.swift; sourceTree = "<group>"; };
 		67141C2A22A28971008017EC /* MostViewedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedController.swift; sourceTree = "<group>"; };
 		67141C2F22A28E6D008017EC /* Beckett-Kanzlei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Beckett-Kanzlei.ttf"; sourceTree = "<group>"; };
 		6771898222A16E16000454A7 /* NYTimesPopular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesPopular.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +50,6 @@
 		67BC137522A2B9ED009C76D1 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		67BC137722A30DFB009C76D1 /* LocalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProvider.swift; sourceTree = "<group>"; };
 		67FCCA3622A3C4B600E524A9 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		67FCCA3822A3C4CE00E524A9 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		91CE62E662E5E193E95510DD /* Pods_NYTimesPopular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTimesPopular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26CD6B08E451FA8B5CE5784 /* Pods-NYTimesPopular.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesPopular.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYTimesPopular/Pods-NYTimesPopular.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,10 +106,7 @@
 		67141C1E22A26DE8008017EC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				67141C1F22A26E0A008017EC /* EmailedTableViewCell.swift */,
-				67141C2622A27FFC008017EC /* SharedTableViewCell.swift */,
-				67141C2822A28954008017EC /* ViewedTableViewCell.swift */,
-				67FCCA3822A3C4CE00E524A9 /* FavoritesTableViewCell.swift */,
+				67141C1F22A26E0A008017EC /* ArticleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -332,20 +323,17 @@
 				67141C1922A25CBC008017EC /* MasterPresenterImpl.swift in Sources */,
 				67141C2522A27FDF008017EC /* SharedViewController.swift in Sources */,
 				67141C2322A270A0008017EC /* Extensions.swift in Sources */,
-				67141C2022A26E0A008017EC /* EmailedTableViewCell.swift in Sources */,
+				67141C2022A26E0A008017EC /* ArticleTableViewCell.swift in Sources */,
 				6771899D22A16E6C000454A7 /* Articles.swift in Sources */,
 				67141C1C22A25CFA008017EC /* Protocols.swift in Sources */,
 				6771899F22A16E8C000454A7 /* GlobalProvider.swift in Sources */,
-				67141C2922A28954008017EC /* ViewedTableViewCell.swift in Sources */,
 				6771898E22A16E16000454A7 /* NYTimesPopular.xcdatamodeld in Sources */,
 				67141C2B22A28971008017EC /* MostViewedController.swift in Sources */,
 				67FCCA3722A3C4B600E524A9 /* FavoritesViewController.swift in Sources */,
 				6771898822A16E16000454A7 /* EmailedViewController.swift in Sources */,
 				67BC137622A2B9ED009C76D1 /* DetailsViewController.swift in Sources */,
 				67BC137822A30DFB009C76D1 /* LocalProvider.swift in Sources */,
-				67FCCA3922A3C4CE00E524A9 /* FavoritesTableViewCell.swift in Sources */,
 				6771898622A16E16000454A7 /* AppDelegate.swift in Sources */,
-				67141C2722A27FFC008017EC /* SharedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

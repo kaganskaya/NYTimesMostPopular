@@ -111,9 +111,9 @@ class GlobalProvider{
                                 
                                 var content:[Shared] = try decoder.decode([Shared].self, from: data)
                                 
-                                    content.sort(by: {$0.publishedDate > $1.publishedDate})
-                                    observer.onNext(content)
-                                    observer.onCompleted()
+                                content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                observer.onNext(content)
+                                observer.onCompleted()
                                 
                             }catch let er as NSError{
                                 
@@ -148,7 +148,7 @@ class GlobalProvider{
     
     
     func getEmailedArticles() -> Observable<[Emailed]> {
-
+        
         let url = "https://api.nytimes.com/svc/mostpopular/v2/emailed/30.json?api-key=\(apiKey)"
         
         return Observable<[Emailed]>.create { observer  in
@@ -175,9 +175,9 @@ class GlobalProvider{
                                 
                                 var content:[Emailed] = try decoder.decode([Emailed].self, from: data)
                                 
-                                    content.sort(by: {$0.publishedDate > $1.publishedDate})
-                                    observer.onNext(content)
-                                    observer.onCompleted()
+                                content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                observer.onNext(content)
+                                observer.onCompleted()
                                 
                             }catch let er as NSError{
                                 
@@ -202,7 +202,7 @@ class GlobalProvider{
                     
             }
             
-        
+            
             return Disposables.create(with: {
                 request.cancel()
             })

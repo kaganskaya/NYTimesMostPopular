@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
-
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,10 +21,10 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
-     
+        
         self.tableView.setupHeader(view: self.view, name: "stared")
         
-        presenter.viewF = self
+        presenter.favoritesView = self
         presenter.getFavorites()
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,7 +37,7 @@ extension FavoritesViewController: FavoritesView,CellUpdater, UITableViewDelegat
     
     func updateTableView() {
         presenter.getFavorites()
-
+        
         tableView.reloadData()
     }
     func showFavorites(articles: [Favorites]) {
@@ -52,23 +52,30 @@ extension FavoritesViewController: FavoritesView,CellUpdater, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favorite",for: indexPath) as? FavoritesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favorite",for: indexPath) as? ArticleTableViewCell
+        
+        cell?.type = "favorite"
         
         cell!.delegate = self
         
-        cell?.fillCell(article: favorites[indexPath.row])
+        cell?.article = self.favorites[indexPath.row]
+        
+        cell?.favorites = self.favorites
+        
+        cell?.fillCell()
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let article = favorites[indexPath.row]
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
-        detailVC.favorites = article
+        
+        detailVC.article = favorites[indexPath.row]
+        
         detailVC.type = "stared"
         
-        let cell = self.tableView.cellForRow(at: indexPath) as! FavoritesTableViewCell
+        let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
         if cell.star.currentBackgroundImage == UIImage(named: "star") {
             self.stared = false

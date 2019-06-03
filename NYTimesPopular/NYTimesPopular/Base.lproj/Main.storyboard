@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shared" rowHeight="312" id="5fM-u7-xeg" customClass="SharedTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shared" rowHeight="312" id="5fM-u7-xeg" customClass="ArticleTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5fM-u7-xeg" id="SDW-SU-6lT">
@@ -49,7 +49,7 @@
                                                         <constraint firstAttribute="width" constant="37" id="y4t-x3-BhV"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="tapped:" destination="5fM-u7-xeg" eventType="touchUpInside" id="xv6-Vn-6Hg"/>
+                                                        <action selector="pressed:" destination="5fM-u7-xeg" eventType="touchUpInside" id="xv6-Vn-6Hg"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -113,7 +113,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailed" rowHeight="312" id="xm3-dY-L4b" customClass="EmailedTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailed" rowHeight="312" id="xm3-dY-L4b" customClass="ArticleTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xm3-dY-L4b" id="x9S-R7-Z90">
@@ -140,7 +140,7 @@
                                                         <constraint firstAttribute="width" constant="37" id="MzX-9S-7ms"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="press:" destination="xm3-dY-L4b" eventType="touchUpInside" id="E4H-fd-urj"/>
+                                                        <action selector="pressed:" destination="xm3-dY-L4b" eventType="touchUpInside" id="E4H-fd-urj"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -360,7 +360,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="viewed" rowHeight="312" id="CVo-zI-Ozp" customClass="ViewedTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="viewed" rowHeight="312" id="CVo-zI-Ozp" customClass="ArticleTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CVo-zI-Ozp" id="cYM-B8-LeJ">
@@ -387,7 +387,7 @@
                                                         <constraint firstAttribute="width" constant="37" id="bHO-FW-xdT"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="tapped:" destination="CVo-zI-Ozp" eventType="touchUpInside" id="pQj-3c-w86"/>
+                                                        <action selector="pressed:" destination="CVo-zI-Ozp" eventType="touchUpInside" id="pQj-3c-w86"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -474,7 +474,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favorite" rowHeight="312" id="cOl-BR-GMd" customClass="FavoritesTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favorite" rowHeight="312" id="cOl-BR-GMd" customClass="ArticleTableViewCell" customModule="NYTimesPopular" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cOl-BR-GMd" id="SHO-Wx-rui">
