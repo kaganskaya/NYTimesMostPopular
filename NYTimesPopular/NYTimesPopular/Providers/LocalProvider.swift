@@ -17,7 +17,7 @@ class LocalProvider{
     lazy var managedContext = appDelegate!.persistentContainer.viewContext
     
     
-    func saveItem(article: Any, type:String) -> Observable<Bool>{
+    func saveItem(article: Article) -> Observable<Bool>{
         
         do {
             
@@ -25,64 +25,22 @@ class LocalProvider{
             
             let entityItem = NSManagedObject(entity: entity,insertInto: managedContext) as! Favorites
             
-            switch type {
-            case "emailed":
-                
-                entityItem.title = (article as! Emailed).title
-                entityItem.abstract = (article as! Emailed).abstract
-                entityItem.date = (article as! Emailed).publishedDate.dateFormat()
-                entityItem.link = (article as! Emailed).url
+                entityItem.title = (article).title!
+                entityItem.abstract = (article).abstract
+                entityItem.date = (article).publishedDate!.dateFormat()
+                entityItem.link = (article).url
                 entityItem.star = true
+            
+            do{
+                let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article).media!)[1])!)
                 
-                do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Emailed).media)[1])!)
-                    entityItem.image = imageData
-                    
-                }catch let er as NSError{
-                    print(er)
-                }
-                
-                entityItem.copywrite = getMediaData(media: (article as! Emailed).media)[0]
-                
-            case "shared":
-                
-                entityItem.title = (article as! Shared).title
-                entityItem.abstract = (article as! Shared).abstract
-                entityItem.date = (article as! Shared).publishedDate.dateFormat()
-                entityItem.link = (article as! Shared).url
-                entityItem.star = true
-                do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Shared).media)[1])!)
-                    entityItem.image = imageData
-                    
-                }catch let er as NSError{
-                    print(er)
-                }
-                entityItem.copywrite = getMediaData(media: (article as! Shared).media)[0]
-                
-            case "viewed":
-                
-                entityItem.title = (article as! Viewed).title
-                entityItem.abstract = (article as! Viewed).abstract
-                entityItem.date = (article as! Viewed).publishedDate.dateFormat()
-                entityItem.link = (article as! Viewed).url
-                entityItem.star = true
-                do{  let imageData = try Data(contentsOf: URL(string: getMediaData(media: (article as! Viewed).media)[1])!)
-                    entityItem.image = imageData
-                    
-                }catch let er as NSError{
-                    print(er)
-                }
-                entityItem.copywrite = getMediaData(media: (article as! Viewed).media)[0]
-            case "stared":
-                
-                entityItem.title = (article as! Favorites).title
-                entityItem.abstract = (article as! Favorites).abstract
-                entityItem.date = (article as! Favorites).date
-                entityItem.link = (article as! Favorites).link
-                entityItem.star = true
-                entityItem.image = (article as! Favorites).image
-                entityItem.copywrite = (article as! Favorites).copywrite
-            default:break
+                entityItem.image = imageData
+            
+            }catch let er as NSError{
+                  print(er)
             }
+            
+            entityItem.copywrite = getMediaData(media: (article).media!)[0]
             
             do{
                 try managedContext.save()

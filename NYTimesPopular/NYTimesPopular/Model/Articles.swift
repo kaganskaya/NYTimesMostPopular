@@ -8,26 +8,37 @@
 
 import Foundation
 
-    struct Viewed: Codable {
+    struct Article: Codable {
         
-        let url: String
-        let adxKeywords: String
+        let url: String?
+        let adxKeywords: String?
         let column: String?
-        let section, byline: String
-        let type: ResultType
-        let title, abstract, publishedDate: String
-        let source: Source
-        let id, assetID, views: Int
-        let desFacet: [String]
-        let orgFacet, perFacet, geoFacet: Facet
-        let media: [Media]
-        let uri: String
+        let section, byline: String?
+        let type: ResultType?
+        let title, abstract, publishedDate: String?
+        let source: Source?
+        let id, assetID, views: Int?
+        let desFacet: [String]?
+        let orgFacet, perFacet, geoFacet: Facet?
+        let media: [Media]?
+        let uri: String?
+        
+        let subsection: String?
+        let shareCount: Int?
+        let countType: CountType?
+        let etaID: Int?
+        let nytdsection: String?
+        let updated: String?
+        
+       
+        let emailCount: Int?
         
         enum CodingKeys: String, CodingKey {
             
             case url
             case adxKeywords = "adx_keywords"
             case column, section, byline, type, title, abstract
+            case nytdsection
             case publishedDate = "published_date"
             case source, id
             case assetID = "asset_id"
@@ -37,90 +48,14 @@ import Foundation
             case perFacet = "per_facet"
             case geoFacet = "geo_facet"
             case media, uri
-        }
-    }
-
-    struct Shared: Codable {
-        
-        let url: String
-        let adxKeywords, subsection: String
-        let shareCount: Int
-        let countType: CountType
-        let column: String?
-        let etaID: Int
-        let section: String
-        let id, assetID: Int
-        let nytdsection, byline: String
-        let type: ResultType
-        let title, abstract, publishedDate: String
-        let source: Source
-        let updated: String
-        let desFacet: [String]
-        let orgFacet, perFacet, geoFacet: Facet
-        let media: [Media]
-        let uri: String
-        
-        enum CodingKeys: String, CodingKey {
-            
-            case url
-            case adxKeywords = "adx_keywords"
+            case updated
             case subsection
             case shareCount = "share_count"
             case countType = "count_type"
-            case column
             case etaID = "eta_id"
-            case section, id
-            case assetID = "asset_id"
-            case nytdsection, byline, type, title, abstract
-            case publishedDate = "published_date"
-            case source, updated
-            case desFacet = "des_facet"
-            case orgFacet = "org_facet"
-            case perFacet = "per_facet"
-            case geoFacet = "geo_facet"
-            case media, uri
-        }
-    }
-
-    struct Emailed: Codable {
-        
-        let url: String
-        let adxKeywords, subsection: String
-        let emailCount: Int
-        let countType: CountType
-        let column: String?
-        let etaID: Int
-        let section: String
-        let id, assetID: Int
-        let nytdsection, byline: String
-        let type: ResultType
-        let title, abstract, publishedDate: String
-        let source: Source
-        let updated: String
-        let desFacet: [String]
-        let orgFacet, perFacet, geoFacet: Facet
-        let media: [Media]
-        let uri: String
-        
-        enum CodingKeys: String, CodingKey {
-            
-            case url
-            case adxKeywords = "adx_keywords"
-            case subsection
             case emailCount = "email_count"
-            case countType = "count_type"
-            case column
-            case etaID = "eta_id"
-            case section, id
-            case assetID = "asset_id"
-            case nytdsection, byline, type, title, abstract
-            case publishedDate = "published_date"
-            case source, updated
-            case desFacet = "des_facet"
-            case orgFacet = "org_facet"
-            case perFacet = "per_facet"
-            case geoFacet = "geo_facet"
-            case media, uri
+
+            
         }
     }
 

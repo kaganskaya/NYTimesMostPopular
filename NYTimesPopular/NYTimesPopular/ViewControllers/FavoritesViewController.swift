@@ -54,11 +54,9 @@ extension FavoritesViewController: FavoritesView,CellUpdater, UITableViewDelegat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "favorite",for: indexPath) as? ArticleTableViewCell
         
-        cell?.type = "favorite"
-        
         cell!.delegate = self
         
-        cell?.article = self.favorites[indexPath.row]
+        cell?.favorite = self.favorites[indexPath.row]
         
         cell?.favorites = self.favorites
         
@@ -71,10 +69,8 @@ extension FavoritesViewController: FavoritesView,CellUpdater, UITableViewDelegat
         
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
         
-        detailVC.article = favorites[indexPath.row]
-        
-        detailVC.type = "stared"
-        
+        detailVC.favorites = favorites[indexPath.row]
+                
         let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
         if cell.star.currentBackgroundImage == UIImage(named: "star") {

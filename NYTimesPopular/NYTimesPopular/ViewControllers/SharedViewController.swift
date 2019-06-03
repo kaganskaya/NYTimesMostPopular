@@ -14,7 +14,7 @@ class SharedViewController: UIViewController {
     
     let presenter = MasterPresenter()
     
-    var articles:[Shared] = []
+    var articles:[Article] = []
     
     var favorites:[Favorites] = []
     
@@ -48,9 +48,9 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
     }
     
     
-    func showArticles(articles: [Any]) {
+    func showArticles(articles: [Article]) {
         
-        self.articles = articles as! [Shared]
+        self.articles = articles 
         self.tableView.reloadData()
     }
     
@@ -63,9 +63,7 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "shared",for: indexPath) as? ArticleTableViewCell
-        
-        cell?.type = "shared"
-        
+                
         cell?.favorites = self.favorites
         
         cell?.article = self.articles[indexPath.row]
@@ -80,9 +78,7 @@ extension SharedViewController: MasterView,FavoritesView, UITableViewDelegate,UI
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
         
         detailVC.article = articles[indexPath.row]
-        
-        detailVC.type = "shared"
-        
+                
         let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
         if cell.star.currentBackgroundImage == UIImage(named: "star") {

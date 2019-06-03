@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MasterView: class {
-    func showArticles(articles:[Any])
+    func showArticles(articles:[Article])
 }
 
 protocol FavoritesView:class {

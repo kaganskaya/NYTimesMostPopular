@@ -1,5 +1,5 @@
 //
-//  EmailedTableViewCell.swift
+//  TableViewCell.swift
 //  NYTimesPopular
 //
 //  Created by liza_kaganskaya on 6/1/19.
@@ -22,8 +22,8 @@ class ArticleTableViewCell: UITableViewCell {
     
     var favorites:[Favorites] = []
     var isTapped:Bool = false
-    var article:Any? = nil
-    var type:String = " "
+    var article:Article? = nil
+    var favorite:Favorites? = nil
     
     let presenter = MasterPresenter()
     let stared:UIImage = UIImage(named: "star1")!
@@ -37,71 +37,42 @@ class ArticleTableViewCell: UITableViewCell {
             
             sender.setBackgroundImage(stared, for: .normal)
             isTapped = true
-            switch self.type {
-                
-            case "emailed":
-                _ = presenter.saveToBd(article: self.article as! Emailed,type:"emailed")
-            case "shared":
-                _ = presenter.saveToBd(article: self.article as! Shared, type:"shared")
-            case "viewed":
-                _ = presenter.saveToBd(article: self.article as! Viewed,type:"viewed")
-                
-            default:break
-            }
             
+            _ = presenter.saveToBd(article: self.article!)
+                
+           
         }else{
             
             sender.setBackgroundImage(empty, for: .normal)
             
             isTapped = false
             
-            if self.type == "favorite" {
-                
-                self.presenter.deleteFromBd(title: self.title.text!)
-                delegate?.updateTableView()
-                
-            }else{
-                presenter.deleteFromBd(title: (self.title.text)!)
-            }
+            self.presenter.deleteFromBd(title: self.title.text!)
             
+            delegate?.updateTableView()
+                
         }
     }
     
     func fillCell(){
         
-        switch type{
+        if favorite != nil {
+            self.articleImage.image = UIImage(data: (favorite?.image)!)
             
-        case "emailed":
-            self.articleImage.downloadImageFrom(urlString: getImgUrl(media: (article as! Emailed).media))
+            self.title.text = favorite!.title
             
-            self.title.text = (article as! Emailed).title
+            self.date.text = favorite?.date
             
-            self.date.text = (article as! Emailed).publishedDate.dateFormat()
-        case "shared":
-            self.articleImage.downloadImageFrom(urlString: getImgUrl(media: (article as! Shared).media))
+        }else{
+            self.articleImage.downloadImageFrom(urlString: getImgUrl(media: (article)!.media!))
             
-            self.title.text = (article as! Shared).title
+            self.title.text = (article)!.title
             
-            self.date.text = (article as! Shared).publishedDate.dateFormat()
-        case "viewed":
-            self.articleImage.downloadImageFrom(urlString: getImgUrl(media: (article as! Viewed).media))
-            
-            self.title.text = (article as! Viewed).title
-            
-            self.date.text = (article as! Viewed).publishedDate.dateFormat()
-        case "favorite":
-            self.articleImage.image = UIImage(data: ((article as! Favorites).image)!)
-            
-            self.title.text = (article as! Favorites).title
-            
-            self.date.text = (article as! Favorites).date
-            
-        default:break
-            
+           self.date.text = (article)!.publishedDate!.dateFormat()
+        
         }
-        
         self.favorites.count == 0 ? self.star.setBackgroundImage(empty, for: .normal) : ()
-        
+
         for i in favorites {
             
             if self.title.text == i.title {

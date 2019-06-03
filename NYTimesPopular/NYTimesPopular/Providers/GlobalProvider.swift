@@ -19,11 +19,11 @@ class GlobalProvider{
     let headers: HTTPHeaders = ["Authorization": "Bearer D1OLBwqLhC5_27J_oSLIjXhAqJs17p6urXveZCxdAyuIQaba9toeFnc1kCWBL8DG9cAsDKsIUX-qki8Ey5fL_eK-XtUQfngg6HSrdWtQmXW4Q4hBOBJ76Z1L-eplXHYx"]
     
     
-    func getViewedArticles() -> Observable<[Viewed]> {
+    func getViewedArticles() -> Observable<[Article]> {
         
         let url = "https://api.nytimes.com/svc/mostpopular/v2/viewed/30.json?api-key=\(apiKey)"
         
-        return Observable<[Viewed]>.create { observer  in
+        return Observable<[Article]>.create { observer  in
             
             let keyList = "results"
             
@@ -45,9 +45,9 @@ class GlobalProvider{
                         if let data = try? JSONSerialization.data(withJSONObject: listValues as! NSArray , options:[]){
                             do{
                                 
-                                var content:[Viewed] = try decoder.decode([Viewed].self, from: data)
+                                var content:[Article] = try decoder.decode([Article].self, from: data)
                                 
-                                content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                content.sort(by: {$0.publishedDate! > $1.publishedDate!})
                                 
                                 observer.onNext(content)
                                 observer.onCompleted()
@@ -83,11 +83,11 @@ class GlobalProvider{
     }
     
     
-    func getSharedArticles() -> Observable<[Shared]> {
+    func getSharedArticles() -> Observable<[Article]> {
         
         let url = "https://api.nytimes.com/svc/mostpopular/v2/shared/30/facebook.json?api-key=\(apiKey)"
         
-        return Observable<[Shared]>.create { observer  in
+        return Observable<[Article]>.create { observer  in
             
             let keyList = "results"
             
@@ -109,9 +109,9 @@ class GlobalProvider{
                         if let data = try? JSONSerialization.data(withJSONObject: listValues as! NSArray , options:[]){
                             do{
                                 
-                                var content:[Shared] = try decoder.decode([Shared].self, from: data)
+                                var content:[Article] = try decoder.decode([Article].self, from: data)
                                 
-                                content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                content.sort(by: { $0.publishedDate! >  $1.publishedDate!})
                                 observer.onNext(content)
                                 observer.onCompleted()
                                 
@@ -147,11 +147,11 @@ class GlobalProvider{
     }
     
     
-    func getEmailedArticles() -> Observable<[Emailed]> {
+    func getEmailedArticles() -> Observable<[Article]> {
         
         let url = "https://api.nytimes.com/svc/mostpopular/v2/emailed/30.json?api-key=\(apiKey)"
         
-        return Observable<[Emailed]>.create { observer  in
+        return Observable<[Article]>.create { observer  in
             
             let keyList = "results"
             
@@ -173,9 +173,9 @@ class GlobalProvider{
                         if let data = try? JSONSerialization.data(withJSONObject: listValues as! NSArray , options:[]){
                             do{
                                 
-                                var content:[Emailed] = try decoder.decode([Emailed].self, from: data)
+                                var content:[Article] = try decoder.decode([Article].self, from: data)
                                 
-                                content.sort(by: {$0.publishedDate > $1.publishedDate})
+                                content.sort(by: { $0.publishedDate! > $1.publishedDate!})
                                 observer.onNext(content)
                                 observer.onCompleted()
                                 

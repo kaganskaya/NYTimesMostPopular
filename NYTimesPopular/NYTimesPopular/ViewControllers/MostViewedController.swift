@@ -16,7 +16,7 @@ class MostViewedController: UIViewController {
     
     let presenter = MasterPresenter()
     
-    var articles:[Viewed] = []
+    var articles:[Article] = []
     
     var favorites:[Favorites] = []
     
@@ -51,9 +51,9 @@ extension MostViewedController: MasterView, FavoritesView, UITableViewDelegate,U
     }
     
     
-    func showArticles(articles: [Any]) {
+    func showArticles(articles: [Article]) {
         
-        self.articles = articles as! [Viewed]
+        self.articles = articles
         self.tableView.reloadData()
     }
     
@@ -66,8 +66,6 @@ extension MostViewedController: MasterView, FavoritesView, UITableViewDelegate,U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "viewed",for: indexPath) as? ArticleTableViewCell
-        
-        cell?.type = "viewed"
         
         cell?.favorites = self.favorites
         
@@ -84,9 +82,7 @@ extension MostViewedController: MasterView, FavoritesView, UITableViewDelegate,U
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "detail") as? DetailsViewController else { return }
         
         detailVC.article = articles[indexPath.row]
-        
-        detailVC.type = "viewed"
-        
+                
         let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
         if cell.star.currentBackgroundImage == UIImage(named: "star") {

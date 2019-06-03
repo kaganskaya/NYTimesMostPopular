@@ -25,8 +25,8 @@ class MasterPresenter{
         return localProvider.deleteData(title:title)
     }
     
-    func saveToBd(article:Any,type:String) ->Observable<Bool>{
-        return localProvider.saveItem(article: article,type: type)
+    func saveToBd(article:Article) ->Observable<Bool>{
+        return localProvider.saveItem(article: article)
     }
     
     func getFavorites(){

@@ -15,7 +15,7 @@ class EmailedViewController: UIViewController {
     
     let presenter = MasterPresenter()
     
-    var articles:[Emailed] = []
+    var articles:[Article] = []
     
     var favorites:[Favorites] = []
     
@@ -50,9 +50,9 @@ extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,
     }
     
     
-    func showArticles(articles: [Any]) {
+    func showArticles(articles: [Article]) {
         
-        self.articles = articles as! [Emailed]
+        self.articles = articles 
         self.tableView.reloadData()
     }
     
@@ -65,8 +65,6 @@ extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "emailed",for: indexPath) as? ArticleTableViewCell
-        
-        cell?.type = "emailed"
         
         cell?.favorites = self.favorites
         
@@ -83,7 +81,6 @@ extension EmailedViewController: MasterView, FavoritesView, UITableViewDelegate,
         
         detailVC.article = articles[indexPath.row]
         
-        detailVC.type = "emailed"
         
         let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
         
